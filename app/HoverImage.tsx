@@ -1,14 +1,23 @@
 import { SiPixiv, SiReddit } from 'react-icons/si'
-import { MdFavorite } from 'react-icons/md'
+import { MdFavorite, MdFullscreen } from 'react-icons/md'
 import { IPic } from '@/typings'
 import { Dispatch, SetStateAction } from 'react'
 
 export default function HoverImage({
   image,
   setShowInfo,
+  setselectedImage,
+  index,
 }: {
   image: IPic
   setShowInfo: Dispatch<SetStateAction<boolean>>
+  setselectedImage: Dispatch<
+    SetStateAction<{
+      image: string
+      index: number
+    } | null>
+  >
+  index: number
 }) {
   function isPixiv(url: string) {
     return url.includes('pixiv')
@@ -46,16 +55,27 @@ export default function HoverImage({
             {isPixiv(image.source) ? (
               <>
                 <SiPixiv className='text-3xl text-cyan-500 brightness-125' />
-                <span className='text-white text-sm'>Pixiv</span>
+                <span className='text-slate-200 text-sm'>Pixiv</span>
               </>
             ) : (
               <>
                 <SiReddit className='text-3xl text-orange-500 brightness-125' />
-                <span className='text-white text-sm'>Reddit</span>
+                <span className='text-slate-200 text-sm'>Reddit</span>
               </>
             )}
           </a>
         )}
+
+        <MdFullscreen
+          onClick={(e) => {
+            e.stopPropagation()
+            setselectedImage({
+              image: image.url,
+              index,
+            })
+          }}
+          className='text-slate-200 text-5xl absolute left-3 top-5'
+        />
       </div>
     </>
   )

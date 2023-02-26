@@ -19,16 +19,3 @@ async function getWaifus() {
 
   return json.images
 }
-
-{
-  /* <Image
-        priority
-        className='w-[34%] h-screen object-cover sticky top-0'
-        alt='pic'
-        src={waifus[0].url}
-        width={waifus[0].width}
-        height={waifus[0].height}
-        placeholder='blur'
-        blurDataURL='data:image/gif;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAQAAAAnZu5uAAAAEElEQVR42mOM4mGAAkYSmABAYAIEPiBLmAAAAABJRU5ErkJggg=='
-      /> */
-}
