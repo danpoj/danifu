@@ -11,7 +11,7 @@ export interface IPic {
   image_id: number
   favourites: number
   dominant_color: string
-  source: string
+  source: string | null
   uploaded_at: string
   liked_at: null
   is_nsfw: boolean

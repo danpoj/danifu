@@ -21,7 +21,7 @@ export function BlurImage({ image }: { image: IPic }) {
       blurDataURL='data:image/gif;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAQAAAAnZu5uAAAAEElEQVR42mOM4mGAAkYSmABAYAIEPiBLmAAAAABJRU5ErkJggg=='
       className={cn(
         'duration-500 ease-in-out group-hover:scale-110',
-        isLoading ? 'scale-105' : 'scale-100'
+        isLoading ? 'scale-105 blur-sm' : 'scale-100'
       )}
       onLoadingComplete={() => setIsLoading(false)}
     />
