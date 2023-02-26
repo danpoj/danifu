@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 스크롤바 제거 */
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
+}
+
+/* 모바일 클릭 하이라이트 제거 */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

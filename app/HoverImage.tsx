@@ -37,7 +37,7 @@ export default function HoverImage({
       >
         {/* Likes */}
         <div className='flex gap-1 items-center'>
-          <MdFavorite className='text-3xl text-rose-600 brightness-125' />
+          <MdFavorite className='text-[1.7rem] text-rose-600 brightness-125' />
           <span className='text-red-500 text-xl font-black brightness-125'>
             {image.favourites}
           </span>
@@ -69,12 +69,13 @@ export default function HoverImage({
         <MdFullscreen
           onClick={(e) => {
             e.stopPropagation()
+            document.body.style.overflow = 'hidden'
             setselectedImage({
               image: image.url,
               index,
             })
           }}
-          className='text-slate-200 text-5xl absolute left-2 top-3'
+          className='text-slate-200 text-[2.5rem] absolute left-2 top-3'
         />
       </div>
     </>
