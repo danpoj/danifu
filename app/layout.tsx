@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from '@next/font/google'
 import type { Metadata } from 'next'
-import { AnalyticsWrapper } from './analytics'
+import { AnalyticsWrapper } from './components/analytics'
 
 {
   /* <title>Danifu</title>
