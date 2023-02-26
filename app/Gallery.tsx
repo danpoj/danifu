@@ -20,9 +20,7 @@ export default function Gallery({ waifus }: { waifus: IPic[] }) {
   const getWaifus = useCallback(async () => {
     setIsLoading(true)
 
-    const res = await fetch(
-      'https://api.waifu.im/search?many=true&origin=PORTRAIT'
-    )
+    const res = await fetch('https://api.waifu.im/search?many=true')
     const json: { images: IPic[] } = await res.json()
 
     setNewWaifus(json.images)

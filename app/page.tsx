@@ -12,9 +12,7 @@ export default async function Home() {
 }
 
 async function getWaifus() {
-  const res = await fetch(
-    'https://api.waifu.im/search?many=true&origin=PORTRAIT'
-  )
+  const res = await fetch('https://api.waifu.im/search?many=true')
   const json = await res.json()
 
   return json.images

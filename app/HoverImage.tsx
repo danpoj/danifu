@@ -74,7 +74,7 @@ export default function HoverImage({
               index,
             })
           }}
-          className='text-slate-200 text-5xl absolute left-3 top-5'
+          className='text-slate-200 text-5xl absolute left-2 top-3'
         />
       </div>
     </>
