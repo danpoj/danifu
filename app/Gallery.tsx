@@ -149,7 +149,7 @@ export default function Gallery({ waifus }: { waifus: IPic[] }) {
                 document.body.style.overflow = 'unset'
                 setselectedImage(null)
               }}
-              className='text-white text-[2.4rem] h-12 w-12 p-1 rounded cursor-pointer bg-black text-opacity-70 hover:text-opacity-100'
+              className='text-white text-[2.4rem] h-12 w-12 p-[0.4rem] rounded cursor-pointer bg-black text-opacity-70 hover:text-opacity-100'
             />
             <div className='flex gap-3 bg-black h-12 rounded-lg'>
               <AiOutlineLeft

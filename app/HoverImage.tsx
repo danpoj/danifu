@@ -54,12 +54,12 @@ export default function HoverImage({
           >
             {isPixiv(image.source) ? (
               <>
-                <SiPixiv className='text-3xl text-cyan-500 brightness-125' />
+                <SiPixiv className='text-[1.7rem] text-cyan-500 brightness-125' />
                 <span className='text-slate-200 text-sm'>Pixiv</span>
               </>
             ) : (
               <>
-                <SiReddit className='text-3xl text-orange-500 brightness-125' />
+                <SiReddit className='text-[1.7rem] text-orange-500 brightness-125' />
                 <span className='text-slate-200 text-sm'>Reddit</span>
               </>
             )}
