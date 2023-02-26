@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from '@next/font/google'
 import type { Metadata } from 'next'
+import { AnalyticsWrapper } from './analytics'
 
 {
   /* <title>Danifu</title>
@@ -64,7 +65,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <AnalyticsWrapper />
+      </body>
     </html>
   )
 }
