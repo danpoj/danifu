@@ -1,8 +1,15 @@
 import { SiPixiv, SiReddit } from 'react-icons/si'
 import { MdFavorite } from 'react-icons/md'
 import { IPic } from '@/typings'
+import { Dispatch, SetStateAction } from 'react'
 
-export default function HoverImage({ image }: { image: IPic }) {
+export default function HoverImage({
+  image,
+  setShowInfo,
+}: {
+  image: IPic
+  setShowInfo: Dispatch<SetStateAction<boolean>>
+}) {
   function isPixiv(url: string) {
     return url.includes('pixiv')
   }
@@ -10,10 +17,15 @@ export default function HoverImage({ image }: { image: IPic }) {
   return (
     <>
       {/* Cover */}
-      <div className='absolute inset-0 hidden group-hover:flex opacity-70 bg-black'></div>
+      <div className='absolute inset-0 flex opacity-70 bg-black'></div>
 
       {/* Info */}
-      <div className='absolute inset-0 hidden group-hover:flex flex-col gap-4 justify-center items-center'>
+      <div
+        onClick={() => {
+          setShowInfo(false)
+        }}
+        className='absolute inset-0 flex flex-col gap-4 justify-center items-center select-none cursor-pointer'
+      >
         {/* Likes */}
         <div className='flex gap-1 items-center'>
           <MdFavorite className='text-3xl text-rose-600 brightness-125' />
