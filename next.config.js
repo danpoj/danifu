@@ -5,6 +5,7 @@ const nextConfig = {
   },
   images: {
     domains: ['cdn.waifu.im'],
+    unoptimized: true,
   },
 }
 
