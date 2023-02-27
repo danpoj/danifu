@@ -7,6 +7,7 @@ import { MdOutlineRefresh, MdFullscreenExit } from 'react-icons/md'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { BiArrowToTop } from 'react-icons/bi'
 import { BlurImage } from './BlurImage'
+import fetchWaifus from '@/libs/fetchWaifus'
 
 export default function Gallery({ waifus }: { waifus: IPic[] }) {
   const [newWaifus, setNewWaifus] = useState<IPic[] | null>(null)
@@ -15,14 +16,21 @@ export default function Gallery({ waifus }: { waifus: IPic[] }) {
     image: string
     index: number
   } | null>(null)
+  // const [imageType, setImageType] = useState({
+  //   tag: 'waifu',
+  //   is_nsfw: '',
+  // })
 
   const getWaifus = useCallback(async () => {
     setIsLoading(true)
 
-    const res = await fetch('https://api.waifu.im/search?many=true')
-    const json: { images: IPic[] } = await res.json()
+    try {
+      const waifuImages = await fetchWaifus('raiden-shogun')
+      setNewWaifus(waifuImages)
+    } catch (e) {
+      console.error('getWaifus', e)
+    }
 
-    setNewWaifus(json.images)
     setIsLoading(false)
   }, [])
 

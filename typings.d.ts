@@ -21,3 +21,15 @@ export interface IPic {
   preview_url: string
   tags: IType[]
 }
+
+export type Tag =
+  | 'maid'
+  | 'waifu'
+  | 'marin-kitagawa'
+  | 'mori-calliope'
+  | 'raiden-shogun'
+  | 'oppai'
+  | 'selfies'
+  | 'uniform'
+
+export type OrderBy = 'FAVOURITES' | 'UPLOADED_AT' | 'RANDOM'
