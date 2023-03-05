@@ -11,7 +11,7 @@ const ReFreshButton = ({ getWaifus, isLoading }: Props) => {
     <button
       onClick={getWaifus}
       disabled={isLoading}
-      className={`btn-primary ${isLoading && 'pointer-events-none'}`}
+      className={`btn-primary group ${isLoading && 'pointer-events-none'}`}
     >
       <InstagramGradient />
       <MdOutlineRefresh

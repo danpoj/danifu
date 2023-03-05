@@ -13,6 +13,9 @@ body::-webkit-scrollbar {
 }
 
 @layer components {
+  .bg-instagram-opa95 {
+    @apply bg-gradient-to-tr from-[#eed85a]/95 via-[#ee4583]/95 to-[#2762f2]/95;
+  }
   .bg-instagram {
     @apply bg-gradient-to-tr from-[#eed85a] via-[#ee4583] to-[#2762f2];
   }

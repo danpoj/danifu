@@ -2,6 +2,7 @@ import { FullScreenModalProps } from '@/typings'
 import Image from 'next/image'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { MdFullscreenExit } from 'react-icons/md'
+import InstagramGradient from './InstagramGradient'
 
 const FullScreenModal = ({
   selectedImage,
@@ -15,21 +16,28 @@ const FullScreenModal = ({
   }
 
   return (
-    <div className='fixed inset-0 h-screen bg-black bg-opacity-90 flex justify-center select-none'>
+    <div className='fixed inset-0 h-screen bg-instagram-opa95 flex justify-center select-none'>
       <div className='z-50 flex p-4 w-full justify-between h-12 items-center mt-3'>
-        <MdFullscreenExit
+        <button
           onClick={onExitModalClicked}
-          className='text-white text-[2.4rem] h-12 w-12 p-[0.4rem] rounded cursor-pointer bg-black text-opacity-70 hover:text-opacity-100'
-        />
-        <div className='flex gap-3 bg-black h-12 rounded-lg'>
-          <AiOutlineLeft
+          className='btn-primary bg-black/60 hover:bg-black'
+        >
+          <MdFullscreenExit className='text-2xl text-white' />
+        </button>
+
+        <div className='flex gap-3 h-12 rounded-lg'>
+          <button
             onClick={getPrevImage}
-            className='text-2xl p-2 w-12 h-12 text-white rounded opacity-70 cursor-pointer hover:opacity-100 '
-          />
-          <AiOutlineRight
+            className='btn-primary bg-black/60 hover:bg-black rounded-full'
+          >
+            <AiOutlineLeft className='text-2xl text-white' />
+          </button>
+          <button
             onClick={getNextImage}
-            className='text-2xl p-2 w-12 h-12 text-white rounded opacity-70 cursor-pointer hover:opacity-100'
-          />
+            className='btn-primary bg-black/60 hover:bg-black'
+          >
+            <AiOutlineRight className='text-2xl text-white' />
+          </button>
         </div>
       </div>
       <Image

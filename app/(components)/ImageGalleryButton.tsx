@@ -12,14 +12,20 @@ const ImageGalleryButton = ({
 }: ImageGalleryButtonProps) => {
   const [isModal, setIsModal] = useState(false)
 
-  const onClick = () => {
+  const toggleGalleryModal = () => {
     setIsModal(!isModal)
+  }
+
+  const navigateGallery = (index: number) => {
+    return () => {
+      setSelectedIndex(index)
+    }
   }
 
   return (
     <>
       <div className='w-48 rounded-lg flex flex-wrap gap-3 flex-row-reverse items-center'>
-        <button onClick={onClick} className='btn-primary'>
+        <button onClick={toggleGalleryModal} className='btn-primary group'>
           <InstagramGradient />
           {isModal ? (
             <IoClose className='absolute text-2xl text-white' />
@@ -32,9 +38,7 @@ const ImageGalleryButton = ({
             .fill(0)
             .map((_, i) => (
               <button
-                onClick={() => {
-                  setSelectedIndex(i)
-                }}
+                onClick={navigateGallery(i)}
                 key={i}
                 className={`${
                   selectedIndex === i ? 'brightness-110' : 'brightness-50'
