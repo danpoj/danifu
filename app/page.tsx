@@ -1,19 +1,9 @@
+import fetchWaifus from '@/libs/fetchWaifus'
 import { IPic } from '@/typings'
-import Gallery from './Gallery'
+import Gallery from './(components)/Gallery'
 
 export default async function Home() {
-  const waifus: IPic[] = await getWaifus()
+  const waifus: IPic[] = await fetchWaifus()
 
-  return (
-    <div className='columns-2 lg:columns-3 xl:columns-4 gap-1 w-full'>
-      <Gallery waifus={waifus} />
-    </div>
-  )
-}
-
-async function getWaifus() {
-  const res = await fetch('https://api.waifu.im/search?many=true')
-  const json = await res.json()
-
-  return json.images
+  return <Gallery waifus={waifus} />
 }

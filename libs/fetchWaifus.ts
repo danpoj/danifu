@@ -10,7 +10,11 @@ export default async function fetchWaifus(
   const res = await fetch(
     `${BASE_URL}/search?many=true&included_tags=${tag}&is_nsfw=${is_nsfw}&order_by=${order_by}`
   )
-  const json: { images: IPic[] } = await res.json()
 
-  return json.images
+  if (res.ok) {
+    const json: { images: IPic[] } = await res.json()
+    return json.images
+  }
+
+  throw new Error('fetchWaifus Error')
 }

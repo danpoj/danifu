@@ -1,32 +1,18 @@
 import { SiPixiv, SiReddit } from 'react-icons/si'
 import { MdFavorite, MdFullscreen } from 'react-icons/md'
-import { IPic } from '@/typings'
-import { Dispatch, SetStateAction } from 'react'
+import { HoverImageProps } from '@/typings'
+import { isPixiv } from '@/libs/isPixiv'
 
 export default function HoverImage({
   image,
   setShowInfo,
   setselectedImage,
   index,
-}: {
-  image: IPic
-  setShowInfo: Dispatch<SetStateAction<boolean>>
-  setselectedImage: Dispatch<
-    SetStateAction<{
-      image: string
-      index: number
-    } | null>
-  >
-  index: number
-}) {
-  function isPixiv(url: string) {
-    return url.includes('pixiv')
-  }
-
+}: HoverImageProps) {
   return (
     <>
       {/* Cover */}
-      <div className='absolute inset-0 flex opacity-70 bg-black'></div>
+      <div className='absolute inset-0 flex opacity-70 bg-black' />
 
       {/* Info */}
       <div
