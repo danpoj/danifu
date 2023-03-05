@@ -1,4 +1,5 @@
 import { MdOutlineRefresh } from 'react-icons/md'
+import InstagramGradient from './InstagramGradient'
 
 interface Props {
   getWaifus: () => Promise<void>
@@ -10,12 +11,11 @@ const ReFreshButton = ({ getWaifus, isLoading }: Props) => {
     <button
       onClick={getWaifus}
       disabled={isLoading}
-      className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-black shadow-xl flex justify-center items-center group active:scale-90 transition ${
-        isLoading && 'pointer-events-none'
-      }`}
+      className={`btn-primary ${isLoading && 'pointer-events-none'}`}
     >
+      <InstagramGradient />
       <MdOutlineRefresh
-        className={`text-3xl text-slate-300 group-hover:text-slate-100 ${
+        className={`absolute text-2xl text-white ${
           isLoading && 'animate-spin'
         }`}
       />

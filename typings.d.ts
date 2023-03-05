@@ -59,7 +59,12 @@ export interface FullScreenModalProps {
 }
 
 export interface ImageCardsProps {
-  newWaifus: IPic[] | null
   waifus: IPic[]
   setselectedImage: Dispatch<SetStateAction<ISelectedImage | null>>
+}
+
+export interface ImageGalleryButtonProps {
+  allWaifus: IPic[][]
+  selectedIndex: number
+  setSelectedIndex: Dispatch<SetStateAction<number>>
 }

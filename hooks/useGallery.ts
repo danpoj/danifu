@@ -3,75 +3,59 @@ import { IPic, ISelectedImage } from '@/typings'
 import { useCallback, useState } from 'react'
 
 export default function useGallery(waifus: IPic[]) {
-  const [newWaifus, setNewWaifus] = useState<IPic[] | null>(null)
+  const [allWaifus, setAllWaifus] = useState([waifus])
   const [isLoading, setIsLoading] = useState(false)
   const [selectedImage, setselectedImage] = useState<ISelectedImage | null>(
     null
   )
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
   const getWaifus = useCallback(async () => {
     setIsLoading(true)
 
     try {
       const waifuImages = await fetchWaifus()
-      setNewWaifus(waifuImages)
+      setAllWaifus((prevWaifus) => [...prevWaifus, waifuImages])
+      setSelectedIndex(allWaifus.length)
     } catch (e) {
       console.error('getWaifus - fetch Error', e)
     }
 
     setIsLoading(false)
-  }, [])
+  }, [allWaifus.length])
 
-  const getPrevImage = useCallback(() => {
-    if (newWaifus) {
-      const prevIndex =
-        selectedImage!.index === 0
-          ? newWaifus.length - 1
-          : selectedImage!.index - 1
+  const getPrevImage = () => {
+    const currentImages = allWaifus[selectedIndex]
 
-      setselectedImage({
-        image: newWaifus[prevIndex].url,
-        index: prevIndex,
-      })
-    } else {
-      const prevIndex =
-        selectedImage!.index === 0
-          ? waifus.length - 1
-          : selectedImage!.index - 1
+    const prevIndex =
+      selectedImage!.index === 0
+        ? currentImages.length - 1
+        : selectedImage!.index - 1
 
-      setselectedImage({
-        image: waifus[prevIndex].url,
-        index: prevIndex,
-      })
-    }
-  }, [newWaifus, waifus, selectedImage])
+    setselectedImage({
+      image: currentImages[prevIndex].url,
+      index: prevIndex,
+    })
+  }
 
-  const getNextImage = useCallback(() => {
-    if (newWaifus) {
-      const nextIndex =
-        selectedImage!.index === newWaifus.length - 1
-          ? 0
-          : selectedImage!.index + 1
+  const getNextImage = () => {
+    const currentImages = allWaifus[selectedIndex]
 
-      setselectedImage({
-        image: newWaifus[nextIndex].url,
-        index: nextIndex,
-      })
-    } else {
-      const nextIndex =
-        selectedImage!.index === waifus.length - 1
-          ? 0
-          : selectedImage!.index + 1
+    const nextIndex =
+      selectedImage!.index === currentImages.length - 1
+        ? 0
+        : selectedImage!.index + 1
 
-      setselectedImage({
-        image: waifus[nextIndex].url,
-        index: nextIndex,
-      })
-    }
-  }, [newWaifus, waifus, selectedImage])
+    setselectedImage({
+      image: currentImages[nextIndex].url,
+      index: nextIndex,
+    })
+  }
 
   return {
-    newWaifus,
+    allWaifus,
+    setSelectedIndex,
+    selectedIndex,
     isLoading,
     selectedImage,
     setselectedImage,

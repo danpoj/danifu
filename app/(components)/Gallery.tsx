@@ -6,10 +6,13 @@ import ReFreshButton from './ReFreshButton'
 import ScrollTopButton from './ScrollTopButton'
 import FullScreenModal from './FullScreenModal'
 import ImageCards from './ImageCards'
+import ImageGalleryButton from './ImageGalleryButton'
 
 export default function Gallery({ waifus }: { waifus: IPic[] }) {
   const {
-    newWaifus,
+    allWaifus,
+    selectedIndex,
+    setSelectedIndex,
     isLoading,
     selectedImage,
     setselectedImage,
@@ -21,14 +24,18 @@ export default function Gallery({ waifus }: { waifus: IPic[] }) {
   return (
     <div className='columns-2 lg:columns-3 xl:columns-4 gap-1 w-full'>
       <ImageCards
-        newWaifus={newWaifus}
-        waifus={waifus}
+        waifus={allWaifus[selectedIndex]}
         setselectedImage={setselectedImage}
       />
 
-      <div className='fixed top-4 right-4 flex flex-col gap-2'>
+      <div className='fixed top-4 right-4 flex flex-col items-end gap-3 w-14'>
         <ReFreshButton getWaifus={getWaifus} isLoading={isLoading} />
         <ScrollTopButton />
+        <ImageGalleryButton
+          allWaifus={allWaifus}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
+        />
       </div>
 
       {selectedImage && (

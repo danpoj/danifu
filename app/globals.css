@@ -11,3 +11,12 @@ body::-webkit-scrollbar {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+@layer components {
+  .bg-instagram {
+    @apply bg-gradient-to-tr from-[#eed85a] via-[#ee4583] to-[#2762f2];
+  }
+  .btn-primary {
+    @apply w-12 h-12 md:w-14 md:h-14 rounded-full flex justify-center items-center active:scale-90 transition relative hover:brightness-125;
+  }
+}
