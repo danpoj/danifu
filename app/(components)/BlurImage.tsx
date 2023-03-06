@@ -6,24 +6,19 @@ import { useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import HoverImage from './HoverImage'
 import cn from '@/libs/classnames'
-import Tilt from 'react-parallax-tilt'
 
 export function BlurImage({ image, setselectedImage, index }: ImageProps) {
   const [isLoading, setIsLoading] = useState(true)
   const [showInfo, setShowInfo] = useState(false)
 
+  const onImageClicked = () => {
+    setShowInfo(true)
+  }
+
   return (
-    <Tilt
-      glareEnable={true}
-      glareMaxOpacity={0.8}
-      glareColor='#ffffff'
-      glarePosition='bottom'
-      glareBorderRadius='20px'
-      tiltMaxAngleX={16}
-      tiltMaxAngleY={16}
-    >
+    <>
       <Image
-        onClick={() => setShowInfo(true)}
+        onClick={onImageClicked}
         alt='pic'
         src={image.url}
         width={image.width}
@@ -52,6 +47,6 @@ export function BlurImage({ image, setselectedImage, index }: ImageProps) {
           index={index}
         />
       )}
-    </Tilt>
+    </>
   )
 }

@@ -1,5 +1,5 @@
 import './globals.css'
-import { Inter } from '@next/font/google'
+import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import { AnalyticsWrapper } from './(components)/analytics'
 
