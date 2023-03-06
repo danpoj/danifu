@@ -9,6 +9,21 @@ export default function HoverImage({
   setselectedImage,
   index,
 }: HoverImageProps) {
+  const onFullScreenButtonClicked = (
+    e: React.MouseEvent<SVGElement, MouseEvent>
+  ) => {
+    e.stopPropagation()
+    document.body.style.overflow = 'hidden'
+    setselectedImage({
+      image: image,
+      index,
+    })
+  }
+
+  const hideInfoCard = () => {
+    setShowInfo(false)
+  }
+
   return (
     <>
       {/* Cover */}
@@ -16,9 +31,7 @@ export default function HoverImage({
 
       {/* Info */}
       <div
-        onClick={() => {
-          setShowInfo(false)
-        }}
+        onClick={hideInfoCard}
         className='absolute inset-0 flex flex-col gap-4 justify-center items-center select-none cursor-pointer'
       >
         {/* Likes */}
@@ -31,39 +44,36 @@ export default function HoverImage({
         </div>
 
         {/* Source */}
-        {image.source && (
-          <a
-            href={image.source}
-            target='_blank'
-            rel='noreferrer'
-            className='flex gap-2 items-center hover:hue-rotate-30 transition'
-          >
-            {isPixiv(image.source) ? (
-              <>
-                <SiPixiv className='text-[1.7rem] text-cyan-500 brightness-125' />
-                <span className='text-slate-200 text-sm'>Pixiv</span>
-              </>
-            ) : (
-              <>
-                <SiReddit className='text-[1.7rem] text-orange-500 brightness-125' />
-                <span className='text-slate-200 text-sm'>Reddit</span>
-              </>
-            )}
-          </a>
-        )}
+        {image.source && <SourceLink source={image.source} />}
 
         <MdFullscreen
-          onClick={(e) => {
-            e.stopPropagation()
-            document.body.style.overflow = 'hidden'
-            setselectedImage({
-              image: image,
-              index,
-            })
-          }}
+          onClick={onFullScreenButtonClicked}
           className='text-slate-200 text-[2.5rem] absolute left-2 top-3'
         />
       </div>
     </>
+  )
+}
+
+const SourceLink = ({ source }: { source: string }) => {
+  return (
+    <a
+      href={source}
+      target='_blank'
+      rel='noreferrer'
+      className='flex gap-2 items-center hover:hue-rotate-30 transition'
+    >
+      {isPixiv(source) ? (
+        <>
+          <SiPixiv className='text-[1.7rem] text-cyan-500 brightness-125' />
+          <span className='text-slate-200 text-sm'>Pixiv</span>
+        </>
+      ) : (
+        <>
+          <SiReddit className='text-[1.7rem] text-orange-500 brightness-125' />
+          <span className='text-slate-200 text-sm'>Reddit</span>
+        </>
+      )}
+    </a>
   )
 }

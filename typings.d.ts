@@ -68,3 +68,10 @@ export interface ImageGalleryButtonProps {
   selectedIndex: number
   setSelectedIndex: Dispatch<SetStateAction<number>>
 }
+
+export interface ImageWrapperProps {
+  image: IPic
+  onImageClicked: () => void
+  onLoadingComplete: () => void
+  isLoading: boolean
+}
