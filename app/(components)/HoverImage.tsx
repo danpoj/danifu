@@ -57,7 +57,7 @@ export default function HoverImage({
             e.stopPropagation()
             document.body.style.overflow = 'hidden'
             setselectedImage({
-              image: image.url,
+              image: image,
               index,
             })
           }}

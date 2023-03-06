@@ -37,7 +37,7 @@ export type Tag =
 export type OrderBy = 'FAVOURITES' | 'UPLOADED_AT' | 'RANDOM'
 
 export interface ISelectedImage {
-  image: string
+  image: IPic
   index: number
 }
 
@@ -64,7 +64,7 @@ export interface ImageCardsProps {
 }
 
 export interface ImageGalleryButtonProps {
-  allWaifus: IPic[][]
+  firstImages: IPic[]
   selectedIndex: number
   setSelectedIndex: Dispatch<SetStateAction<number>>
 }

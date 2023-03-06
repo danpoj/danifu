@@ -6,7 +6,7 @@ import { IoClose } from 'react-icons/io5'
 import InstagramGradient from './InstagramGradient'
 
 const ImageGalleryButton = ({
-  allWaifus,
+  firstImages,
   selectedIndex,
   setSelectedIndex,
 }: ImageGalleryButtonProps) => {
@@ -34,26 +34,25 @@ const ImageGalleryButton = ({
           )}
         </button>
         {isModal &&
-          Array(allWaifus.length)
-            .fill(0)
-            .map((_, i) => (
-              <button
-                onClick={navigateGallery(i)}
-                key={i}
-                className={`${
-                  selectedIndex === i ? 'brightness-110' : 'brightness-50'
-                } w-12 h-12 relative rounded-full hover:brightness-110 transition`}
-              >
-                <InstagramGradient />
-                <Image
-                  className='object-cover absolute rounded-full w-12 h-12 object-top top-0'
-                  src={allWaifus[i][0].url}
-                  width={80}
-                  height={80}
-                  alt='first image'
-                />
-              </button>
-            ))}
+          firstImages.map((image, i) => (
+            <button
+              onClick={navigateGallery(i)}
+              key={i}
+              className={`${
+                selectedIndex === i ? 'brightness-110' : 'brightness-50'
+              } w-12 h-12 md:w-14 md:h-14 relative rounded-full hover:brightness-110 transition`}
+            >
+              <InstagramGradient />
+              <Image
+                priority
+                className='object-cover absolute rounded-full w-12 h-12 md:w-14 md:h-14 object-top top-0'
+                src={image.url}
+                width={image.width}
+                height={image.height}
+                alt='waifu image'
+              />
+            </button>
+          ))}
       </div>
     </>
   )

@@ -33,7 +33,7 @@ export default function useGallery(waifus: IPic[]) {
         : selectedImage!.index - 1
 
     setselectedImage({
-      image: currentImages[prevIndex].url,
+      image: currentImages[prevIndex],
       index: prevIndex,
     })
   }
@@ -47,7 +47,7 @@ export default function useGallery(waifus: IPic[]) {
         : selectedImage!.index + 1
 
     setselectedImage({
-      image: currentImages[nextIndex].url,
+      image: currentImages[nextIndex],
       index: nextIndex,
     })
   }

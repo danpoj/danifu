@@ -21,6 +21,8 @@ export default function Gallery({ waifus }: { waifus: IPic[] }) {
     getPrevImage,
   } = useGallery(waifus)
 
+  const firstImages = allWaifus.map((waifus) => waifus[0])
+
   return (
     <div className='columns-2 lg:columns-3 xl:columns-4 gap-1 w-full'>
       <ImageCards
@@ -32,7 +34,7 @@ export default function Gallery({ waifus }: { waifus: IPic[] }) {
         <ReFreshButton getWaifus={getWaifus} isLoading={isLoading} />
         <ScrollTopButton />
         <ImageGalleryButton
-          allWaifus={allWaifus}
+          firstImages={firstImages}
           selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
         />
