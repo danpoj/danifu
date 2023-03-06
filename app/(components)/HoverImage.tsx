@@ -26,32 +26,50 @@ export default function HoverImage({
 
   return (
     <>
-      {/* Cover */}
+      {/* dark Cover */}
       <div className='absolute inset-0 flex opacity-70 bg-black' />
 
       {/* Info */}
-      <div
-        onClick={hideInfoCard}
-        className='absolute inset-0 flex flex-col gap-4 justify-center items-center select-none cursor-pointer'
-      >
-        {/* Likes */}
-        <div className='flex gap-1 items-center'>
-          <MdFavorite className='text-[1.7rem] text-rose-600 brightness-125' />
-          <span className='text-red-500 text-xl font-black brightness-125'>
-            {image.favourites}
-          </span>
-          <span className='text-white text-xs'>Likes</span>
-        </div>
+      <InfoContainer onClick={hideInfoCard}>
+        <Likes likesCount={image.favourites} />
 
-        {/* Source */}
         {image.source && <SourceLink source={image.source} />}
 
         <MdFullscreen
           onClick={onFullScreenButtonClicked}
           className='text-slate-200 text-[2.5rem] absolute left-2 top-3'
         />
-      </div>
+      </InfoContainer>
     </>
+  )
+}
+
+const InfoContainer = ({
+  onClick,
+  children,
+}: {
+  onClick: () => void
+  children: React.ReactNode
+}) => {
+  return (
+    <div
+      onClick={onClick}
+      className='absolute inset-0 flex flex-col gap-4 justify-center items-center select-none cursor-pointer'
+    >
+      {children}
+    </div>
+  )
+}
+
+const Likes = ({ likesCount }: { likesCount: number }) => {
+  return (
+    <div className='flex gap-1 items-center'>
+      <MdFavorite className='text-[1.7rem] text-rose-600 brightness-125' />
+      <span className='text-red-500 text-xl font-black brightness-125'>
+        {likesCount}
+      </span>
+      <span className='text-white text-xs'>Likes</span>
+    </div>
   )
 }
 

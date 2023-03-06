@@ -18,20 +18,18 @@ const FullScreenModal = ({
   return (
     <div className='fixed inset-0 h-screen bg-black/90 flex justify-center select-none'>
       <div className='absolute top-0 z-50 flex p-6 w-full justify-between h-12 items-center mt-7'>
-        <button onClick={onExitModalClicked} className='btn-primary group'>
-          <InstagramGradient />
+        <InstaButton onClick={onExitModalClicked}>
           <MdFullscreenExit className='absolute text-2xl text-white' />
-        </button>
+        </InstaButton>
 
         <div className='flex gap-3 h-12 rounded-lg'>
-          <button onClick={getPrevImage} className='btn-primary group'>
-            <InstagramGradient />
+          <InstaButton onClick={getPrevImage}>
             <AiOutlineLeft className='absolute text-2xl text-white' />
-          </button>
-          <button onClick={getNextImage} className='btn-primary group'>
-            <InstagramGradient />
+          </InstaButton>
+
+          <InstaButton onClick={getNextImage}>
             <AiOutlineRight className='absolute text-2xl text-white' />
-          </button>
+          </InstaButton>
         </div>
       </div>
       <Image
@@ -42,6 +40,21 @@ const FullScreenModal = ({
         className='object-contain w-full h-full'
       />
     </div>
+  )
+}
+
+const InstaButton = ({
+  onClick,
+  children,
+}: {
+  onClick: () => void
+  children: React.ReactNode
+}) => {
+  return (
+    <button onClick={onClick} className='btn-primary group'>
+      <InstagramGradient />
+      {children}
+    </button>
   )
 }
 
